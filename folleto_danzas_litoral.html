@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danzas del Litoral Argentino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .folleto {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '♪';
+            font-size: 80px;
+            position: absolute;
+            top: -10px;
+            right: 30px;
+            opacity: 0.2;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid #ff6b35;
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateX(5px);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h3 {
+            color: #e74c3c;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+            border-bottom: 2px solid #ff6b35;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .enlaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .enlace-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ff6b35;
+            transition: all 0.3s ease;
+        }
+        
+        .enlace-item:hover {
+            background: #ff6b35;
+            color: white;
+            transform: scale(1.02);
+        }
+        
+        .enlace-item .guarani {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .enlace-item:hover .guarani {
+            color: white;
+        }
+        
+        .enlace-item .traduccion {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .enlace-item:hover .traduccion {
+            color: #ecf0f1;
+        }
+        
+        .polka-tipos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .polka-tipo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .polka-tipo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .chamame-style {
+            background: white;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .chamame-style:hover {
+            border-color: #ff6b35;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+        }
+        
+        .chamame-style h4 {
+            color: #e74c3c;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chamame-style h4::before {
+            content: '🎵';
+            font-size: 1.2em;
+        }
+        
+        .exponente {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .decorative-element {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2em;
+            color: #ff6b35;
+            opacity: 0.6;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .enlaces-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .polka-tipos {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="folleto">
+        <div class="header">
+            <h1>Apuntes del Taller de danzas tradicionales del Litoral Argentino</h1>
+            <p>Docente: Franco Casquel</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2><span class="icon">🫂</span>Enlaces Tradicionales</h2>
+                <p>Los enlaces son figuras coreográficas características de las danzas litoraleñas, que conectan diferentes partes del baile con movimientos específicos y significativos.</p>
+                
+                <div class="enlaces-grid">
+                    <div class="enlace-item">
+                        <div class="guarani">Narãnha jepo'o</div>
+                        <div class="traduccion">Arrancar la naranja</div>
+                    </div>
+                    <div class="enlace-item">
+                        <div class="guarani">Ryguasu ajúra voka</div>
+                        <div class="traduccion">Ahorcar la gallina</div>
+                    </div>
+                    <div class="enlace-item">
+                        <div class="guarani">Chipa aku reraha</div>
+                        <div class="traduccion">Llevar chipá caliente</div>
+                    </div>
+                    <div class="enlace-item">
+                        <div class="guarani">Guyra api</div>
+                        <div class="traduccion">Apuntar al pajarito</div>
+                    </div>
+                    <div class="enlace-item">
+                        <div class="guarani">Poste ñenohe</div>
+                        <div class="traduccion">Levantar el poste</div>
+                    </div>
+                    <div class="enlace-item">
+                        <div class="guarani">Ka'í manó</div>
+                        <div class="traduccion">Mono muerto</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="decorative-element">♪ ♫ ♪</div>
+            
+            <div class="section">
+                <h2><span class="icon">🎵</span>Tipos de Polka</h2>
+                <p>La polka del litoral argentino presenta diferentes variantes rítmicas y estilísticas que enriquecen el repertorio dancístico de la región.</p>
+                
+                <div class="polka-tipos">
+                    <div class="polka-tipo">Syryry</div>
+                    <div class="polka-tipo">Jekutu</div>
+                    <div class="polka-tipo">Valseado</div>
+                    <div class="polka-tipo">Popó</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2><span class="icon">🎼</span>Estilos de Chamamé</h2>
+                <p>El chamamé, danza emblemática del litoral argentino, presenta dos estilos principales que definen su carácter y ejecución:</p>
+                
+                <div class="chamame-style">
+                    <h4>Kireí</h4>
+                    <p><span class="highlight">Características:</span> Rápido, ágil, con partes bailadas y zapateos distintivos.</p>
+                    <p><span class="highlight">Acompañamiento femenino:</span> Escoba y pycheche (elementos tradicionales que acompañan el baile).</p>
+                    <a href="https://www.youtube.com/watch?v=NIRfmC61krk&list=PLsmewZE9hB0RMb9SFv3S7lWDBUmXucswX" target="_blank" class="exponente" style="text-decoration: none; cursor: pointer;">Principal exponente: Antonio Tarragó Ros</a>
+                </div>
+                
+                <div class="chamame-style">
+                    <h4>Canguí</h4>
+                    <p><span class="highlight">Características:</span> Lento, nostalgioso, con cadencias largas que transmiten melancolía.</p>
+                    <p><span class="highlight">Particularidad:</span> Por lo general no lleva zapateos, privilegiando la expresión melódica.</p>
+                    <a href="https://www.youtube.com/watch?v=1zzvN11ZEkI&list=PLSm_Z2iq6mP8mDaZG8JErTh9ra6nycIfT" target="_blank" class="exponente" style="text-decoration: none; cursor: pointer;">Principal exponente: Tránsito Cocomarola</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>"La danza es el lenguaje oculto del alma, y en el litoral argentino, ese lenguaje habla de tierra, río y tradición"</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Diseño: Luciana Raquel Castillo (Agosto 2025)</p>
+        </div>
+    </div>
+</body>
+</html>
